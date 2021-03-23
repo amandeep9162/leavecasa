@@ -252,7 +252,7 @@ Route::post('bus-fare-payment','BusCitySourceController@bus_payment')->name('bus
     Route::any('/book', ['uses'=>'WebsiteController@hotel_book'])->name('hotel.book');
     Route::get('/hotel/{sid}/{code}', ['uses'=>'WebsiteController@hotel_detail'])->name('hotel.detail');
 
-    Route::get('/get_search/{parm?}', , function(){
+    Route::get('/get_search/{parm?}', function(){
 
         return 'hello';
     })->name('search.city');
