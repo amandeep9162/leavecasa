@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
           <div class="logo_container">
-            <div class="logo"><a href="<?php echo e(route('index')); ?>"><img src="https://leavecasa.com/images/logo1.png" alt=""></a></div>
+            <div class="logo"><a href="<?php echo e(route('index')); ?>"><img src="<?php echo e(asset('images/logo1.png')); ?>" alt=""></a></div>
           </div>
           <div class="main_nav_container ml-auto">
             <ul class="main_nav_list">

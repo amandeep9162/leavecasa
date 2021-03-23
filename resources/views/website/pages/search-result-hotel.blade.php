@@ -1,4 +1,3 @@
-
 @extends('frontend.layout.materialize')
 @section('content')
 @php 

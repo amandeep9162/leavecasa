@@ -5,6 +5,20 @@ use App\Helpers\Hotel;
 //dump(json_encode(Session::get('hotel_req')));
 // dd($results);
 ?>
+<style type="text/css">
+  .left-header{
+    display: inline;
+    width: 100%;
+    text-align: left;
+  }
+
+  .icon-set{
+    position: relative;
+    top: 3px;
+    font-size: 18px;
+}
+  }
+</style>
 <?php if($no_of_hotels!=0): ?> 
 <div class="home1">
   <div class="home_slider_container1">
@@ -149,6 +163,8 @@ use App\Helpers\Hotel;
         
         <?php $__currentLoopData = $catVal; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $hotel): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
           <?php
+
+         // dump($hotel);
           $mark_price =0;
           if(!empty($hotel['category']))
           {
@@ -208,9 +224,50 @@ use App\Helpers\Hotel;
      <h4 class="with-icon dark-blue-color"><i class="material-icons left mt-1 red-color">location_on</i>
           <?php echo e(Illuminate\Support\Str::limit($hotel['name'], 22, '...')); ?></h4>
         <h4 class="dark-blue-color"><i class="material-icons left mt-1 green-color">account_balance_wallet</i>
-        ₹ <?php echo e($hotel_total_price); ?></h4>
+        ₹ <?php echo e($hotel_total_price); ?> 
+
+        <a class="ml-2 text-success" type="button" style="cursor: pointer;" data-toggle="modal" data-target="#<?php echo e($hotel['hotel_code']); ?>">Facilities </a>
+
+      </h4> 
        </p>   
           <div class="action">
+           <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="<?php echo e($hotel['hotel_code']); ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel<?php echo e($hotel['hotel_code']); ?>">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+          <h4   class="modal-title left-header" id="myModalLabel<?php echo e($hotel['hotel_code']); ?>">Facilities</h4>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+        
+      </div>
+      <div class="modal-body">
+
+      <?php if(!empty($hotel['facilities'])): ?>
+        <div class="row">
+       <?php $__currentLoopData = explode(';', $hotel['facilities']); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $info): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          
+           <div class="col-3 mb-2">
+            <i class="material-icons left mt-1 icon-set ">verified_user</i><?php echo e($info); ?>
+
+          </div>
+
+        
+         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    </div>
+    
+
+    <?php endif; ?>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
             <a class="button btn-small mdb " href="<?php echo e(route('hotel.detail',['sid'=>$h_val['search_id'], 'code'=>$hotel['hotel_code']])); ?>">SELECT</a>
           </div>
         </div>

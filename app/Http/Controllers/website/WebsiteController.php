@@ -21,12 +21,12 @@ use Hash;
 class WebsiteController extends Controller
 {
   //protected $api_url ="http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/";
-    protected $hotel_url = 'https://api-sandbox.grnconnect.com/api/v3/hotels/';
-   protected $hotel_key = 'b12092d579e8795a77c3abe759d6185f';
+    //protected $hotel_url = 'https://api-sandbox.grnconnect.com/api/v3/hotels/';
+   //protected $hotel_key = 'b12092d579e8795a77c3abe759d6185f';
 
 //live
-    //protected $hotel_url = 'https://v4-api.grnconnect.com/api/v3/hotels/';
-    //protected $hotel_key = '7a0ad1b28d1b56ec461f9bd0c3034d86';
+    protected $hotel_url = 'https://v4-api.grnconnect.com/api/v3/hotels/';
+    protected $hotel_key = '7a0ad1b28d1b56ec461f9bd0c3034d86';
 
     public function __construct(){
 
@@ -90,6 +90,8 @@ class WebsiteController extends Controller
         // }
         // dump($hotel);
         Session::put('rates', $hotel['hotel']);
+        //return view('frontendo.pages.hotel_detail', compact('code', 'hotel_imgs', 'hotel', 'hotel_req'));
+
         return view('frontend.pages.hotel.hotel_detail', compact('code', 'hotel_imgs', 'hotel', 'hotel_req'));
     }
 
@@ -271,7 +273,6 @@ class WebsiteController extends Controller
         Session::put('hotel_req',$jsonData);
         $results    =   json_decode($res->getBody()->getContents(),true);
         
-        //dd($results['hotels']);
        
       return $results;//->toArray();
     }
@@ -308,8 +309,8 @@ Session::put('orginal_request', $request->all());
 
         // dump( json_encode($hotel_codes) );
         $new = [];
-        if(count($hotel_codes) > 250 ){
-            $chunk = array_chunk( $hotel_codes, 250);
+        if(count($hotel_codes) > 100 ){
+            $chunk = array_chunk( $hotel_codes, 99);
            // dump($chunk);
             $chunk_hotel_cod_size   = count($chunk);
             for($i=0; $i< $chunk_hotel_cod_size; $i++ ){
@@ -366,7 +367,7 @@ Session::put('orginal_request', $request->all());
 
          // Hotel::hotel_log('availability_response' , json_encode($hotel));
         
-        // return view('website.pages.search-result-hotel',['no_of_hotels'=>$no_of_hotels , 'results'=>$hotel, 'request'=> Session::get('hotel_req'),'mark_up'=>$mark_up ]);
+        //return view('website.pages.search-result-hotel',['no_of_hotels'=>$no_of_hotels , 'results'=>$hotel, 'request'=> Session::get('hotel_req'),'mark_up'=>$mark_up ]);
         return view('frontend.pages.hotel.search-result-hotel',['no_of_hotels'=>$no_of_hotels , 'results'=>$hotel, 'request'=> Session::get('hotel_req'),'mark_up'=>$mark_up ]);
     }
 

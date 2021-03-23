@@ -16,3 +16,12 @@ Stack trace:
 #3 phar:///opt/cpanel/composer/bin/composer/vendor/symfony/console/Application.php(127): Symfony\Component\Console\Application->renderException(Object(Symfony\Component\Finder\Exception\AccessDeniedException), Object(Symfony\Component\Console\Output\StreamOutput))
 #4 phar:///opt/cpanel/composer/bin/composer/src/Composer/Console/Application.php(104): Symfony\Component\ in phar:///opt/cpanel/composer/bin/composer/vendor/symfony/polyfill-mbstring/Mbstring.php on line 671
 [18-Feb-2021 07:05:23 UTC] PHP Fatal error:  Allowed memory size of 1610612736 bytes exhausted (tried to allocate 4096 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/DependencyResolver/Solver.php on line 223
+[18-Feb-2021 13:22:12 UTC] PHP Fatal error:  Allowed memory size of 1610612736 bytes exhausted (tried to allocate 4096 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/DependencyResolver/Solver.php on line 223
+[18-Feb-2021 14:21:05 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Symfony\Polyfill\Mbstring\iconv_strpos() in /home/leavecasa/public_html/vendor/symfony/polyfill-mbstring/Mbstring.php:490
+Stack trace:
+#0 /home/leavecasa/public_html/vendor/symfony/polyfill-mbstring/bootstrap.php(34): Symfony\Polyfill\Mbstring\Mbstring::mb_strpos(NULL, '/json', 0, 'UTF-8')
+#1 /home/leavecasa/public_html/vendor/laravel/framework/src/Illuminate/Support/Str.php(103): mb_strpos(NULL, '/json')
+#2 /home/leavecasa/public_html/vendor/laravel/framework/src/Illuminate/Http/Concerns/InteractsWithContentTypes.php(34): Illuminate\Support\Str::contains(NULL, Array)
+#3 /home/leavecasa/public_html/vendor/laravel/framework/src/Illuminate/Http/Request.php(339): Illuminate\Http\Request->isJson()
+#4 /home/leavecasa/public_html/vendor/laravel/framework/src/Illuminate/Http/Request.php(367): Illuminate\Http\Request->getInputSource()
+#5 /home/leavecasa/public_html/vendor/laravel/framework/src/Illuminate/Http/Request.php(59): Illuminate\Http\Request::createFromBase(Object(Il in /home/leavecasa/public_html/vendor/symfony/polyfill-mbstring/Mbstring.php on line 490
